@@ -10,7 +10,7 @@ import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 
 public final class Chat extends javax.swing.JFrame {
-
+    
     String puerto = "COM5";//el puerto debe ser igual al especificado mediante el IDE de Arduino
 
     PanamaHitek_Arduino ino = new PanamaHitek_Arduino();
