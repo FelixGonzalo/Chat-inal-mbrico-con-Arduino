@@ -5,7 +5,9 @@ RF24 myRadio (9, 10);
 byte addresses[][6] = {"0"};
 
 struct package {
-  char  text[300] = "User1";
+  int id = 1;
+  float temperature = 18.3;
+  char  text[300] = "Text to be transmit2";
 };
 
 
@@ -31,17 +33,27 @@ void loop() {
     while (myRadio.available()){
       myRadio.read( &dataRecieve, sizeof(dataRecieve) );
     }
-    Serial.print("\n");
+    //Serial.println("Recieve: ");
+    //Serial.print("Package:");
+    //Serial.print(dataRecieve.id);
+    //Serial.print("\n");
+    //Serial.println(dataRecieve.temperature);
     Serial.println(dataRecieve.text);
-    Serial.print("\n");
+    //Serial.print("\n");
   }
 
   delay(200);
 
   myRadio.stopListening();
-  /*Serial.print("\n");
-  Serial.println(dataTransmit.text);
-  Serial.print("\n");*/
+  dataTransmit.id = dataTransmit.id + 1;
+  dataTransmit.temperature = dataTransmit.temperature+0.1;
+  //Serial.println("Transmit: ");
+  //Serial.print("Package:");
+  //Serial.print(dataTransmit.id);
+  //Serial.print("\n");
+  //Serial.println(dataTransmit.temperature);
+  //Serial.println(dataTransmit.text);
+  //Serial.print("\n");
   char inData[300];
   int index = 0;
   while (Serial.available() >= 1) {

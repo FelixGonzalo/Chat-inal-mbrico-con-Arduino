@@ -11,7 +11,7 @@ import jssc.SerialPortException;
 
 public final class Chat extends javax.swing.JFrame {
     
-    String puerto = "COM5";//el puerto debe ser igual al especificado mediante el IDE de Arduino
+    String puerto = "COM4";//el puerto debe ser igual al especificado mediante el IDE de Arduino
 
     PanamaHitek_Arduino ino = new PanamaHitek_Arduino();
     SerialPortEventListener listener = new SerialPortEventListener() {
@@ -299,7 +299,7 @@ public final class Chat extends javax.swing.JFrame {
     public void configuracionLibreriaRXTX() {
         try {
             //arduinoRXTX: java recibe y transmite(puerto,velocidad de transmisión, escucha)
-            ino.arduinoRXTX(puerto, 115200, listener);
+            ino.arduinoRXTX(puerto, 9600, listener);
         } catch (ArduinoException ex) {
             errorAplicacion(ex);
         }
